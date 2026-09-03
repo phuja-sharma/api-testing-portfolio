@@ -29,12 +29,6 @@ jobs:
           npm install
           npm install -D tsx typescript @types/node @types/express @types/cors @types/better-sqlite3
 
-      - name: List Files in Server Dir (Debug)
-        working-directory: ./server
-        run: |
-          ls -la
-          ls -la src || true
-
       - name: Create Data Directory & Setup Env
         working-directory: ./server
         run: |
@@ -46,18 +40,16 @@ jobs:
       - name: Start Backend Server
         working-directory: ./server
         run: |
-          if [ -f "src/index.ts" ]; then
-            npx tsx src/index.ts > server.log 2>&1 &
-          elif [ -f "src/server.ts" ]; then
-            npx tsx src/server.ts > server.log 2>&1 &
-          elif [ -f "index.ts" ]; then
-            npx tsx index.ts > server.log 2>&1 &
-          else
-            npx tsx src/app.ts > server.log 2>&1 &
-          fi
+          ENTRY_POINT=$(find src -maxdepth 2 -name "app.ts" -o -name "index.ts" -o -name "server.ts" | head -n 1)
+          echo "Executing entry point: $ENTRY_POINT"
+          npx tsx "$ENTRY_POINT" > server.log 2>&1 &
 
       - name: Wait for TCP Port 3001
-        run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
+        run: npx wait-on tcp:127.0.0.1:3001 --timeout 15000
+
+      - name: Print Server Log On Failure
+        if: failure()
+        run: cat server/server.log
 
       - name: Run Newman Tests
         run: |
