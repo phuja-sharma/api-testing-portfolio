@@ -1,0 +1,59 @@
+﻿name: API Functional Tests (Newman)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Portfolio Repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Backend Repo
+        uses: actions/checkout@v4
+        with:
+          repository: abiiemmm/warung-kasir
+          path: backend
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend/server
+        run: npm install
+
+      - name: Setup Env, Data Directory & Database Schema
+        working-directory: ./backend/server
+        run: |
+          mkdir -p data
+          chmod -R 777 data
+          echo "PORT=3001" > .env
+          echo "NODE_ENV=test" >> .env
+          echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
+          npm run migrate --if-present
+          npm run seed --if-present
+
+      - name: Start Express Server
+        working-directory: ./backend/server
+        run: npx tsx src/index.ts > ../../server.log 2>&1 &
+
+      - name: Wait for Server Readiness
+        run: npx wait-on tcp:3001 --timeout 30000
+
+      - name: Run Newman Tests
+        run: |
+          npm install -g newman
+          newman run "postman/Test Warung-Kasir.postman_collection.json" \
+            -e "postman/New Environment.postman_environment.json" \
+            --env-var "baseUrl=http://localhost:3001" \
+            --env-var "base_url=http://localhost:3001"
+
+      - name: Print Server Log If Test Failed
+        if: failure()
+        run: cat server.log
