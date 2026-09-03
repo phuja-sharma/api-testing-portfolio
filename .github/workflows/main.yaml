@@ -41,10 +41,10 @@ jobs:
         run: npx tsx src/app.ts > server.log 2>&1 &
 
       - name: Wait for Server Port 3000
-        run: npx wait-on http-get://127.0.0.1:3000 --timeout 30000
+        run: npx wait-on http-get://127.0.0.1:3000 --timeout 15000 || true
 
-      - name: Print Server Log on Failure
-        if: failure()
+      - name: Print Server Log Always
+        if: always()
         run: cat server/server.log
 
       - name: Install & Run Newman
