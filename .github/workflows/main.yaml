@@ -23,31 +23,31 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install All Backend Dependencies
+      - name: Install All Backend Dependencies & Types
         working-directory: ./server
         run: |
           npm install
-          npm install -D vitest supertest express cors helmet express-rate-limit better-sqlite3 @types/express @types/cors @types/node ts-node typescript
+          npm install -D tsx typescript @types/node @types/express @types/cors @types/better-sqlite3 @types/supertest
 
-      - name: Create .env File
+      - name: Setup Environment File
         working-directory: ./server
         run: |
           echo "PORT=3000" > .env
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Start Express Server Directly
+      - name: Start Backend Server
         working-directory: ./server
-        run: npx ts-node src/app.ts > server.log 2>&1 &
+        run: npx tsx src/app.ts > server.log 2>&1 &
 
-      - name: Wait for Server Port
+      - name: Wait for Server Port 3000
         run: npx wait-on http-get://127.0.0.1:3000 --timeout 30000
 
       - name: Print Server Log on Failure
         if: failure()
         run: cat server/server.log
 
-      - name: Install & Run Newman Tests
+      - name: Install & Run Newman
         run: |
           npm install -g newman
           newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/New Environment.postman_environment.json"
