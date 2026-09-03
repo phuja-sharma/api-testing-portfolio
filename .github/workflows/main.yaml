@@ -28,7 +28,7 @@ jobs:
         working-directory: ./backend/server
         run: npm install
 
-      - name: Setup Env, Data Directory & Seed Database
+      - name: Setup Env, Data Directory & Database Schema
         working-directory: ./backend/server
         run: |
           mkdir -p data
@@ -36,6 +36,7 @@ jobs:
           echo "PORT=3001" > .env
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
+          npm run migrate --if-present
           npm run seed --if-present
 
       - name: Start Express Server
