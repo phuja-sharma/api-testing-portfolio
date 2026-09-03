@@ -43,7 +43,7 @@ jobs:
           echo "MONGO_URI=mongodb://127.0.0.1:27017/warung-kasir" >> .env
           echo "JWT_SECRET=secretkey123" >> .env
 
-      # Jalankan langsung di foreground agar pesan error terminal-nya keluar di layar GitHub
+      # MENJALANKAN SERVER LANGSUNG DI FOREGROUND DENGAN LOG DIBUKA
       - name: Debug Direct Start
         working-directory: ./server
         run: npm start
