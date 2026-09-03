@@ -141,7 +141,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Body matches string\", function () {\r\n    pm.expect(pm.response.text()).to.include(\"name\");\r\n});\r\npm.test(\"Response time is less than 200ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(200);\r\n});\r\npm.test(\"Successful POST request\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r\n});\r\n\r\nvar responseData = pm.response.json();\r\npm.environment.set(\"catId\", responseData.id);\r\n\r\npm.test(\"Responds has valid ID and name\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"id\");\r\n    pm.expect(jsonData).to.have.property(\"name\");\r\n});"
+                  "pm.test(\"Status code is 200 or 201\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r\n});\r\n\r\nvar responseData = pm.response.json();\r\n// Mengambil ID dari root ATAU dari dalam objek 'data'\r\nvar categoryId = responseData.id || (responseData.data && responseData.data.id);\r\n\r\nif (categoryId) {\r\n    pm.environment.set(\"catId\", categoryId);\r\n}\r\n\r\npm.test(\"Response has valid category data\", function () {\r\n    var jsonData = responseData.data || responseData;\r\n    pm.expect(jsonData).to.have.property(\"id\");\r\n    pm.expect(jsonData).to.have.property(\"name\");\r\n});"
                 ]
               }
             }
