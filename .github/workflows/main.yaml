@@ -29,7 +29,7 @@ jobs:
           npm install
           npm install -D tsx typescript @types/node @types/express @types/cors @types/better-sqlite3
 
-      - name: Create Data Folder & Env Setup
+      - name: Create Data Directory & Setup Env
         working-directory: ./server
         run: |
           mkdir -p data
@@ -37,18 +37,6 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Start Backend Server
+      - name: Debug Run Backend Directly
         working-directory: ./server
-        run: npx tsx src/app.ts > server.log 2>&1 &
-
-      - name: Wait for TCP Port 3001
-        run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
-
-      - name: Print Server Log If Port Timeout
-        if: failure()
-        run: cat server/server.log
-
-      - name: Run Newman Tests
-        run: |
-          npm install -g newman
-          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/New Environment.postman_environment.json"
+        run: npx tsx src/app.ts
