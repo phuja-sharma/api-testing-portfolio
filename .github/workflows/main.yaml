@@ -37,21 +37,6 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Start Backend Server
+      - name: Run Package Start Script
         working-directory: ./server
-        run: |
-          ENTRY_POINT=$(find src -maxdepth 2 -name "app.ts" -o -name "index.ts" -o -name "server.ts" | head -n 1)
-          echo "Executing entry point: $ENTRY_POINT"
-          npx tsx "$ENTRY_POINT" > server.log 2>&1 &
-
-      - name: Wait for TCP Port 3001
-        run: npx wait-on tcp:127.0.0.1:3001 --timeout 15000
-
-      - name: Print Server Log On Failure
-        if: failure()
-        run: cat server/server.log
-
-      - name: Run Newman Tests
-        run: |
-          npm install -g newman
-          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/New Environment.postman_environment.json"
+        run: npm start
