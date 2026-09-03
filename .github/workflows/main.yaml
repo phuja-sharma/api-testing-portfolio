@@ -23,9 +23,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Backend Dependencies
+      - name: Install All Backend Dependencies
         working-directory: ./server
-        run: npm install
+        run: |
+          npm install
+          npm install -D tsx typescript @types/node @types/express @types/cors @types/better-sqlite3 express-rate-limit helmet cors better-sqlite3
 
       - name: Create Data Directory & Setup Env
         working-directory: ./server
@@ -35,13 +37,9 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Build Next.js Application
+      - name: Start Application (Dev Mode)
         working-directory: ./server
-        run: npm run build
-
-      - name: Start Next.js Server on Port 3001
-        working-directory: ./server
-        run: npm start -- -p 3001 > server.log 2>&1 &
+        run: npx next dev -p 3001 > server.log 2>&1 &
 
       - name: Wait for TCP Port 3001
         run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
