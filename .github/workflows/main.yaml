@@ -23,11 +23,17 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install All Backend Dependencies
+      - name: Install Backend Dependencies
         working-directory: ./server
         run: |
           npm install
           npm install -D tsx typescript @types/node @types/express @types/cors @types/better-sqlite3
+
+      - name: List Files in Server Dir (Debug)
+        working-directory: ./server
+        run: |
+          ls -la
+          ls -la src || true
 
       - name: Create Data Directory & Setup Env
         working-directory: ./server
@@ -37,6 +43,23 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Debug Run Backend Directly
+      - name: Start Backend Server
         working-directory: ./server
-        run: npx tsx src/app.ts
+        run: |
+          if [ -f "src/index.ts" ]; then
+            npx tsx src/index.ts > server.log 2>&1 &
+          elif [ -f "src/server.ts" ]; then
+            npx tsx src/server.ts > server.log 2>&1 &
+          elif [ -f "index.ts" ]; then
+            npx tsx index.ts > server.log 2>&1 &
+          else
+            npx tsx src/app.ts > server.log 2>&1 &
+          fi
+
+      - name: Wait for TCP Port 3001
+        run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
+
+      - name: Run Newman Tests
+        run: |
+          npm install -g newman
+          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/New Environment.postman_environment.json"
