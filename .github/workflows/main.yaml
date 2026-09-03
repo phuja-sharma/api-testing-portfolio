@@ -1,4 +1,4 @@
-name: API Functional Tests (Newman)
+﻿name: API Functional Tests (Newman)
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
         run: npx tsx src/index.ts > ../../server.log 2>&1 &
 
       - name: Wait for Server Readiness
-        run: npx wait-on http://localhost:3001 --timeout 30000
+        run: npx wait-on tcp:3001 --timeout 30000
 
       - name: Run Newman Tests
         run: |
