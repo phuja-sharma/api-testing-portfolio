@@ -27,27 +27,18 @@ jobs:
         working-directory: ./server
         run: npm install
 
-      - name: Create Data Directory & Setup Env
+      - name: Setup Env & Data Directory
         working-directory: ./server
         run: |
           mkdir -p data
+          chmod -R 777 data
           echo "PORT=3001" > .env
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Setup Database / Run Migration Script
+      - name: Start Express Server
         working-directory: ./server
-        run: |
-          # Cari file skrip migrasi/db di seluruh proyek dan eksekusi
-          MIGRATE_SCRIPT=$(find . -maxdepth 3 -name "*migrate*" -o -name "*seed*" -o -name "*db.ts*" -o -name "*schema*" | head -n 1)
-          if [ -n "$MIGRATE_SCRIPT" ]; then
-            echo "Running migration script: $MIGRATE_SCRIPT"
-            npx tsx "$MIGRATE_SCRIPT" || true
-          fi
-
-      - name: Start Application (Dev Mode)
-        working-directory: ./server
-        run: npx next dev -p 3001 > server.log 2>&1 &
+        run: npx tsx src/index.ts > server.log 2>&1 &
 
       - name: Wait for TCP Port 3001
         run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
@@ -55,4 +46,9 @@ jobs:
       - name: Run Newman Tests
         run: |
           npm install -g newman
-          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/New Environment.postman_environment.json"
+          newman run "postman/Test Warung-Kasir.postman_collection.json" \
+            -e "postman/New Environment.postman_environment.json"
+
+      - name: Print Server Log If Test Failed
+        if: failure()
+        run: cat server/server.log
