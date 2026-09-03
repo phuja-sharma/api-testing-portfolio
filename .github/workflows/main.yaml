@@ -37,7 +37,8 @@ jobs:
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
       - name: Start Express Server
-        run: npx tsx server/src/index.ts > server.log 2>&1 &
+        working-directory: ./server
+        run: npx tsx src/index.ts > ../server.log 2>&1 &
 
       - name: Wait for TCP Port 3001
         run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
