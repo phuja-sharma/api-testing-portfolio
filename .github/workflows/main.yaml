@@ -37,12 +37,17 @@ jobs:
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
-      - name: Start Application (Dev Mode)
+      - name: Run Database Migrations / Seed
         working-directory: ./server
-        run: npx next dev -p 3001 > server.log 2>&1 &
+        run: |
+          npx tsx src/migrations.ts || npx tsx src/db.ts || true
+
+      - name: Start Express Backend Directly
+        working-directory: ./server
+        run: npx tsx src/app.ts > server.log 2>&1 &
 
       - name: Wait for TCP Port 3001
-        run: npx wait-on tcp:127.0.0.1:3001 --timeout 30000
+        run: npx wait-on tcp:127.0.0.1:3001 --timeout 15000
 
       - name: Run Newman Tests
         run: |
