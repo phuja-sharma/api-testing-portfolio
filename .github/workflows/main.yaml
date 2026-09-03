@@ -32,7 +32,7 @@ jobs:
       - name: Setup Environment File
         working-directory: ./server
         run: |
-          echo "PORT=3000" > .env
+          echo "PORT=3001" > .env
           echo "NODE_ENV=test" >> .env
           echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
@@ -40,12 +40,8 @@ jobs:
         working-directory: ./server
         run: npx tsx src/app.ts > server.log 2>&1 &
 
-      - name: Wait for Server Port 3000
-        run: npx wait-on http-get://127.0.0.1:3000 --timeout 15000 || true
-
-      - name: Print Server Log Always
-        if: always()
-        run: cat server/server.log
+      - name: Wait for Server Port 3001
+        run: npx wait-on http-get://127.0.0.1:3001 --timeout 30000
 
       - name: Install & Run Newman
         run: |
