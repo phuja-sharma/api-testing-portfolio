@@ -11,14 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      # 1. Ammbi/Clone source code backend dari repositori pemilik asli ke folder 'server'
+      - name: Checkout Backend Repository
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          repository: abiiemmm/warung-kasir
+          path: server
 
+      # 2. Ambil file tes dari repositori kamu sendiri
+      - name: Checkout Testing Repository
+        uses: actions/checkout@v4
+        with:
+          path: .
+
+      # --- STEP BACKEND SERVER ---
+      - name: Install Backend Dependencies
+        working-directory: ./server   # <--- GitHub Actions akan masuk ke folder server dulu
+        run: npm install
+
+      - name: Start Backend Server
+        working-directory: ./server   # <--- Pindah ke folder server dulu
+        run: npm start &
+
+      - name: Wait for Server to be Ready
+        run: npx wait-on http://localhost:3001 # Ganti port sesuai aplikasi kamu
+
+      # --- STEP TEST NEWMAN ---
       - name: Install Newman
         run: npm install -g newman
 
