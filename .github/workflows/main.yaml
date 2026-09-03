@@ -32,11 +32,15 @@ jobs:
         working-directory: ./server
         run: npm install
 
+      # Membuat file .env dummy secara otomatis khusus untuk Testing CI/CD
       - name: Create .env File
         working-directory: ./server
         run: |
           echo "PORT=3001" > .env
           echo "NODE_ENV=test" >> .env
+          echo "MONGO_URI=mongodb://127.0.0.1:27017/warung-kasir" >> .env
+          echo "DATABASE_URL=mongodb://127.0.0.1:27017/warung-kasir" >> .env
+          echo "JWT_SECRET=supersecretkeyforportfolio123" >> .env
 
       - name: Start Backend Server
         working-directory: ./server
