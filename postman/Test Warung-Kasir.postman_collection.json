@@ -37,12 +37,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/auth/login",
+              "raw": "{{baseUrl}}/auth/login",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "auth",
                 "login"
               ]
@@ -76,12 +75,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/auth/login",
+              "raw": "{{baseUrl}}/auth/login",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "auth",
                 "login"
               ]
@@ -115,12 +113,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/auth/login",
+              "raw": "{{baseUrl}}/auth/login",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "auth",
                 "login"
               ]
@@ -159,12 +156,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories",
+              "raw": "{{baseUrl}}/categories",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories"
               ]
             }
@@ -197,12 +193,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories",
+              "raw": "{{baseUrl}}/categories",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories"
               ]
             }
@@ -235,12 +230,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories",
+              "raw": "{{baseUrl}}/categories",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories"
               ]
             }
@@ -273,12 +267,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories",
+              "raw": "{{baseUrl}}/categories",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories"
               ]
             }
@@ -314,12 +307,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories",
+              "raw": "{{baseUrl}}/categories",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories"
               ]
             }
@@ -352,12 +344,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories/{{catId}}",
+              "raw": "{{baseUrl}}/categories/{{catId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "{{catId}}"
               ]
@@ -391,12 +382,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories/123456",
+              "raw": "{{baseUrl}}/categories/123456",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "123456"
               ]
@@ -430,12 +420,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories/{{catId}}",
+              "raw": "{{baseUrl}}/categories/{{catId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "{{catId}}"
               ]
@@ -469,12 +458,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories/{{catId}}",
+              "raw": "{{baseUrl}}/categories/{{catId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "{{catId}}"
               ]
@@ -508,12 +496,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/categories/123456",
+              "raw": "{{baseUrl}}/categories/123456",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "123456"
               ]
@@ -538,12 +525,11 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/categories/{{catId}}",
+              "raw": "{{baseUrl}}/categories/{{catId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "{{catId}}"
               ]
@@ -568,12 +554,11 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/categories/123456",
+              "raw": "{{baseUrl}}/categories/123456",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "categories",
                 "123456"
               ]
@@ -603,12 +588,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products",
+              "raw": "{{baseUrl}}/products",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ]
             }
@@ -632,12 +616,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products?search=aqua&categoryId=dbe62736-8b32-49ae-8d0c-eca99eca3068&page=1&limit=5",
+              "raw": "{{baseUrl}}/products?search=aqua&categoryId=dbe62736-8b32-49ae-8d0c-eca99eca3068&page=1&limit=5",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ],
               "query": [
@@ -679,12 +662,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products?search=qqwerty",
+              "raw": "{{baseUrl}}/products?search=qqwerty",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ],
               "query": [
@@ -714,12 +696,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products/c1e222f5",
+              "raw": "{{baseUrl}}/products/c1e222f5",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "c1e222f5"
               ]
@@ -744,12 +725,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "raw": "{{baseUrl}}/products/{{productId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "{{productId}}"
               ]
@@ -783,12 +763,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products",
+              "raw": "{{baseUrl}}/products",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ]
             }
@@ -821,12 +800,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products",
+              "raw": "{{baseUrl}}/products",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ]
             }
@@ -859,12 +837,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products",
+              "raw": "{{baseUrl}}/products",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ]
             }
@@ -897,12 +874,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products",
+              "raw": "{{baseUrl}}/products",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products"
               ]
             }
@@ -935,12 +911,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "raw": "{{baseUrl}}/products/{{productId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "{{productId}}"
               ]
@@ -974,12 +949,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products/3dabb62b",
+              "raw": "{{baseUrl}}/products/3dabb62b",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "3dabb62b"
               ]
@@ -1013,12 +987,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/products/{{productId}}/stock",
+              "raw": "{{baseUrl}}/products/{{productId}}/stock",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "{{productId}}",
                 "stock"
@@ -1044,12 +1017,11 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products/{{productId}}",
+              "raw": "{{baseUrl}}/products/{{productId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "{{productId}}"
               ]
@@ -1074,12 +1046,11 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/products/3dabb62",
+              "raw": "{{baseUrl}}/products/3dabb62",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "products",
                 "3dabb62"
               ]
@@ -1118,12 +1089,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions",
+              "raw": "{{baseUrl}}/transactions",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions"
               ]
             }
@@ -1147,12 +1117,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/transactions",
+              "raw": "{{baseUrl}}/transactions",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions"
               ]
             }
@@ -1176,12 +1145,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/transactions?paymentMethod=cash&page=1&limit=5",
+              "raw": "{{baseUrl}}/transactions?paymentMethod=cash&page=1&limit=5",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions"
               ],
               "query": [
@@ -1219,12 +1187,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/transactions/{{transactionId}}",
+              "raw": "{{baseUrl}}/transactions/{{transactionId}}",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions",
                 "{{transactionId}}"
               ]
@@ -1258,12 +1225,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions/{{transactionId}}/void",
+              "raw": "{{baseUrl}}/transactions/{{transactionId}}/void",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions",
                 "{{transactionId}}",
                 "void"
@@ -1289,12 +1255,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/transactions/1112345",
+              "raw": "{{baseUrl}}/transactions/1112345",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions",
                 "1112345"
               ]
@@ -1328,12 +1293,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions",
+              "raw": "{{baseUrl}}/transactions",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions"
               ]
             }
@@ -1366,12 +1330,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions",
+              "raw": "{{baseUrl}}/transactions",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions"
               ]
             }
@@ -1404,12 +1367,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions/112345/void",
+              "raw": "{{baseUrl}}/transactions/112345/void",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions",
                 "112345",
                 "void"
@@ -1444,12 +1406,11 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/transactions/2bb51013-e493-491b-9954-b8ed1428d81a/void",
+              "raw": "{{baseUrl}}/transactions/2bb51013-e493-491b-9954-b8ed1428d81a/void",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
                 "transactions",
                 "2bb51013-e493-491b-9954-b8ed1428d81a",
                 "void"
