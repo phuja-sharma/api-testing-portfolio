@@ -19,4 +19,6 @@ jobs:
           npm install -g newman
           newman run "postman/Test Warung-Kasir.postman_collection.json" \
             -e "postman/New Environment.postman_environment.json" \
-            --env-var "https://warung-kasir-production.up.railway.app"
+            --env-var "baseUrl=https://warung-kasir-production.up.railway.app" \
+            --env-var "url=https://warung-kasir-production.up.railway.app" \
+            --env-var "HOST=https://warung-kasir-production.up.railway.app"
