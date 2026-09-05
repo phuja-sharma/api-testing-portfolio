@@ -609,172 +609,6 @@
       "name": "Products",
       "item": [
         {
-          "name": "GET Show All Products",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET Show All Products - Combined FIlter",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products?search=aqua&categoryId=dbe62736-8b32-49ae-8d0c-eca99eca3068&page=1&limit=5",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products"
-              ],
-              "query": [
-                {
-                  "key": "search",
-                  "value": "aqua"
-                },
-                {
-                  "key": "categoryId",
-                  "value": "dbe62736-8b32-49ae-8d0c-eca99eca3068"
-                },
-                {
-                  "key": "page",
-                  "value": "1"
-                },
-                {
-                  "key": "limit",
-                  "value": "5"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET Show All Products - Query Param (search) Non Existent Name",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products?search=qqwerty",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products"
-              ],
-              "query": [
-                {
-                  "key": "search",
-                  "value": "qqwerty"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET Get One Product (Fail) using Non Existed Product ID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products/c1e222f5",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                "c1e222f5"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET Get One Product using Valid Product ID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products/ef0dadf4-5e45-48d3-9b26-232053d7f439",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                "ef0dadf4-5e45-48d3-9b26-232053d7f439"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "POST Add New Product - Required Fields Only",
           "event": [
             {
@@ -923,6 +757,172 @@
           "response": []
         },
         {
+          "name": "GET Show All Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Show All Products - Combined FIlter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?search=aqua&categoryId={{catId}}&page=1&limit=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "aqua"
+                },
+                {
+                  "key": "categoryId",
+                  "value": "{{catId}}"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Show All Products - Query Param (search) Non Existent Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?search=qqwerty",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "qqwerty"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Get One Product (Fail) using Non Existed Product ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/c1e222f5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "c1e222f5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Get One Product using Valid Product ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "{{productId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "PUT Update Data of The Product (price) using Valid Product ID",
           "event": [
             {
@@ -1038,35 +1038,6 @@
           "response": []
         },
         {
-          "name": "DELETE Delete Product using Valid Product ID",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/products/{{productId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "products",
-                "{{productId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "DELETE Delete Product using Non Existent Product ID",
           "event": [
             {
@@ -1118,7 +1089,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"items\": [{ \"productId\": \"33f95f34-ca3c-4414-9a9e-ccb6dd7f9980\", \"qty\": 5 }], \r\n    \"payment\": 50000\r\n}",
+              "raw": "{\r\n    \"items\": [{ \"productId\": \"{{productId}}\", \"qty\": 5 }], \r\n    \"payment\": 50000\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1457,6 +1428,35 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "DELETE Delete Product using Valid Product ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products/{{productId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products",
+            "{{productId}}"
+          ]
+        }
+      },
+      "response": []
     },
     {
       "name": "DELETE Main Category (Cleanup)",
