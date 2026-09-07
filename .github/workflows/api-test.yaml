@@ -25,4 +25,4 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run postman/"Test Warung-Kasir.postman_collection.json" -e postman/"Warung-Kasir-Environment.postman_environment.json"
+          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/Warung-Kasir-Environment.postman_environment.json"
