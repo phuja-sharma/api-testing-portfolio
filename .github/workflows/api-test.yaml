@@ -19,10 +19,25 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Newman & Reporter
+      - name: Install Newman & HTML Extra Reporter
         run: |
           npm install -g newman newman-reporter-htmlextra
 
-      - name: Run Postman Collection
+      - name: Create Reports Folder
+        run: mkdir -p newman
+
+      - name: Run Postman Collection with HTML Report
         run: |
-          newman run "postman/Test Warung-Kasir.postman_collection.json" -e "postman/Warung-Kasir-Environment.postman_environment.json"
+          newman run "postman/Test Warung-Kasir.postman_collection.json" \
+            -e "postman/Warung-Kasir-Environment.postman_environment.json" \
+            -r htmlextra,cli \
+            --reporter-htmlextra-export newman/report.html \
+            --suppress-exit-code
+
+      - name: Upload HTML Test Report Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: newman-html-test-report
+          path: newman/report.html
+          retention-days: 30
