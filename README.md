@@ -2,8 +2,6 @@
 
 Automated API testing suite for the **Warung Kasir** backend services. Built using Postman and Newman, integrated with GitHub Actions to perform continuous integration testing against ephemeral environments (Railway).
 
-![CI Pipeline](https://github.com/phuja-sharma/api-testing-portfolio/actions/workflows/main.yaml/badge.svg)
-
 ---
 
 ## Overview
